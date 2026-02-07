@@ -1,0 +1,390 @@
+{% extends "stork/base.html" %}
+{% load static %}
+
+{% block title %}Stork | Driver{% endblock %}
+{% block meta_description %}Drive with Stork. Flexible schedule, weekly payouts, and driver support.{% endblock %}
+
+{% block content %}
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#">
+        <img class="brand__logo" src="{% static 'stork/img/stork-logo.png' %}" alt="Stork logo">
+        <div class="brand__text">
+          <div class="brand__name">STORK</div>
+          <div class="brand__tag">Driver platform</div>
+        </div>
+      </a>
+
+      <div class="topbar__right">
+        <nav class="nav">
+          <a href="#benefits">Benefits</a>
+          <a href="#how">How it works</a>
+          <a href="#apply">Apply</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <a class="btn btn--ghost" href="#">Log in</a>
+        <a class="btn btn--primary" href="#apply">Apply</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+
+    <div class="container hero__grid">
+      <div class="hero__left">
+        <div class="badge">
+          <span class="badge__dot"></span>
+          Flexible driving • Weekly payouts
+        </div>
+
+        <h1 class="hero__title">
+          Drive with <span class="accent">Stork</span>.
+          Earn on your time.
+        </h1>
+
+        <p class="hero__lead">
+          Stork helps drivers get ride requests, track earnings, and work whenever they want.
+          No subscriptions — simple commission rules.
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary btn--lg" href="#apply">Start application</a>
+          <a class="btn btn--ghost btn--lg" href="#how">See how it works</a>
+        </div>
+
+        <div class="hero__facts">
+          <div class="fact">
+            <div class="fact__num">7</div>
+            <div class="fact__text">days / week<br><span>you choose</span></div>
+          </div>
+          <div class="fact">
+            <div class="fact__num">1</div>
+            <div class="fact__text">app<br><span>navigation + earnings</span></div>
+          </div>
+          <div class="fact">
+            <div class="fact__num">0</div>
+            <div class="fact__text">monthly fees<br><span>no subscriptions</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right mock / different style -->
+      <div class="hero__right">
+        <div class="mock">
+          <div class="mock__top">
+            <div class="mock__pill">
+              <span class="pulse"></span>
+              Online
+            </div>
+            <div class="mock__earn">
+              <div class="mock__earnLabel">Today</div>
+              <div class="mock__earnValue">286 PLN</div>
+            </div>
+          </div>
+
+          <div class="mock__map" aria-label="Map placeholder">
+            <div class="map__grid"></div>
+            <div class="map__pin map__pin--a"></div>
+            <div class="map__pin map__pin--b"></div>
+            <div class="map__route"></div>
+
+            <div class="ridecard">
+              <div class="ridecard__title">New ride request</div>
+              <div class="ridecard__row">
+                <span class="chip">2.4 km</span>
+                <span class="chip">7 min pickup</span>
+                <span class="chip chip--hot">high demand</span>
+              </div>
+              <div class="ridecard__cta">
+                <span class="btn btn--primary btn--sm">Accept</span>
+                <span class="btn btn--ghost btn--sm">Decline</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mock__bottom">
+            <div class="mini">
+              <div class="mini__k">Payout</div>
+              <div class="mini__v">Weekly</div>
+            </div>
+            <div class="mini">
+              <div class="mini__k">Commission</div>
+              <div class="mini__v">Transparent</div>
+            </div>
+            <div class="mini">
+              <div class="mini__k">Support</div>
+              <div class="mini__v">In-app</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sideNote">
+          * UI mockup for assignment purposes only (no real-time data).
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BENEFITS -->
+  <section class="section" id="benefits">
+    <div class="container">
+      <div class="section__head">
+        <h2>Why drivers choose Stork</h2>
+        <p>Same idea as Uber/Bolt, but designed for your course project. Clear sections and clean UI.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card__icon">⏱️</div>
+          <h3>Work whenever</h3>
+          <p>Go online when you want. Drive part-time or more often — your choice.</p>
+        </article>
+
+        <article class="card">
+          <div class="card__icon">🧭</div>
+          <h3>Built-in navigation</h3>
+          <p>Pickups, drop-offs and route hints inside the app (placeholder for backend later).</p>
+        </article>
+
+        <article class="card">
+          <div class="card__icon">💸</div>
+          <h3>Weekly payouts</h3>
+          <p>Drivers can get paid weekly. Simple payout schedule with a clear history view.</p>
+        </article>
+
+        <article class="card">
+          <div class="card__icon">🛟</div>
+          <h3>Support when needed</h3>
+          <p>In-app help, FAQs, and driver guidance — all from one place.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section--soft" id="how">
+    <div class="container">
+      <div class="section__head">
+        <h2>How it works</h2>
+        <p>Short and clear steps. Teacher sees you understand the real flow.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="step">
+          <div class="step__num">1</div>
+          <div class="step__body">
+            <div class="step__title">Apply</div>
+            <div class="step__text">Fill the driver form with basic details (below).</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step__num">2</div>
+          <div class="step__body">
+            <div class="step__title">Verify documents</div>
+            <div class="step__text">License + ID + vehicle documents (placeholder for backend).</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step__num">3</div>
+          <div class="step__body">
+            <div class="step__title">Go online</div>
+            <div class="step__text">Receive ride requests based on location and demand.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step__num">4</div>
+          <div class="step__body">
+            <div class="step__title">Earn & track</div>
+            <div class="step__text">Complete trips, track earnings, and get weekly payouts.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY FORM -->
+  <section class="section" id="apply">
+    <div class="container">
+      <div class="apply">
+        <div class="apply__left">
+          <h2>Apply to drive</h2>
+          <p class="muted">
+            This form is UI-only for the assignment. No backend needed yet.
+            Later, your Django API can receive these fields.
+          </p>
+
+          <div class="apply__highlights">
+            <div class="hl">
+              <div class="hl__k">Estimated time</div>
+              <div class="hl__v">~2 minutes</div>
+            </div>
+            <div class="hl">
+              <div class="hl__k">Driver type</div>
+              <div class="hl__v">Car / Fleet</div>
+            </div>
+            <div class="hl">
+              <div class="hl__k">Language</div>
+              <div class="hl__v">English</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="apply__right">
+          <form class="form" action="#" method="post">
+            <!-- not actually posting; for UI only -->
+            <div class="form__row">
+              <div class="field">
+                <label>Full name</label>
+                <input type="text" placeholder="John Driver" />
+              </div>
+              <div class="field">
+                <label>Phone</label>
+                <input type="text" placeholder="+48 000 000 000" />
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div class="field">
+                <label>Email</label>
+                <input type="email" placeholder="driver@stork.app" />
+              </div>
+              <div class="field">
+                <label>City</label>
+                <input type="text" placeholder="Wrocław" />
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div class="field">
+                <label>Vehicle type</label>
+                <select>
+                  <option>Car</option>
+                  <option>Van</option>
+                  <option>Electric</option>
+                  <option>Fleet (partner)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Driving license</label>
+                <select>
+                  <option>Category B</option>
+                  <option>Category C</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Short note (optional)</label>
+              <textarea rows="4" placeholder="Anything we should know? (optional)"></textarea>
+            </div>
+
+            <label class="check">
+              <input type="checkbox" />
+              <span>I confirm that the information is correct (UI-only checkbox).</span>
+            </label>
+
+            <div class="form__actions">
+              <button class="btn btn--primary btn--lg" type="button">Submit application</button>
+              <a class="btn btn--ghost btn--lg" href="#faq">Read FAQ</a>
+            </div>
+
+            <div class="form__hint">
+              By submitting, you agree to Terms & Privacy (placeholder links).
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section__head">
+        <h2>Driver stories</h2>
+        <p>Extra polish. Makes it look like a real product website.</p>
+      </div>
+
+      <div class="quotes">
+        <div class="quote">
+          <div class="quote__text">“I drive evenings after classes. Weekly payouts are super clear.”</div>
+          <div class="quote__by">— Alex, part-time driver</div>
+        </div>
+        <div class="quote">
+          <div class="quote__text">“The app is simple: go online, accept rides, track earnings.”</div>
+          <div class="quote__by">— Mira, city driver</div>
+        </div>
+        <div class="quote">
+          <div class="quote__text">“Support and FAQs are easy to find. Everything feels organized.”</div>
+          <div class="quote__by">— Tomasz, fleet partner</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section__head">
+        <h2>FAQ</h2>
+        <p>Use these as placeholders. Replace them with teacher-required details later.</p>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Can I drive with Stork in my city?</summary>
+          <p>List supported cities here. In a real system this can come from backend settings.</p>
+        </details>
+
+        <details>
+          <summary>Do I need my own car?</summary>
+          <p>Typically yes. If you want, mention rentals or partner fleets (project decision).</p>
+        </details>
+
+        <details>
+          <summary>How do payouts work?</summary>
+          <p>Weekly payouts are common. Later, Django backend can provide payout history endpoints.</p>
+        </details>
+
+        <details>
+          <summary>What documents are required?</summary>
+          <p>License, ID, and vehicle documents. Exact requirements depend on local rules.</p>
+        </details>
+      </div>
+
+      <div class="finalCta">
+        <div>
+          <div class="finalCta__title">Ready to drive with Stork?</div>
+          <div class="finalCta__sub">Fill the application form and get started (UI-only).</div>
+        </div>
+        <a class="btn btn--primary btn--lg" href="#apply">Apply now</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <img class="brand__logo brand__logo--small" src="{% static 'stork/img/stork-logo.png' %}" alt="Stork logo">
+        <div>
+          <div class="footer__brand">STORK</div>
+          <div class="footer__muted">© 2026 • UI-only assignment website</div>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </footer>
+{% endblock %}
