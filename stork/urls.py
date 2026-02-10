@@ -24,4 +24,7 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('admin/', admin.site.urls),
     path('driver/',driver, name='driver' ),
+    path('login/',loginPage, name='login'),
+    path('register/',register, name='register' ),
+    path('reservation/',reservation, name='reservation' ),
 ]
