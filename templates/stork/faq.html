@@ -1,0 +1,209 @@
+{% extends "stork/base.html" %}
+{% load static %}
+
+{% block title %}Stork | Driver FAQ{% endblock %}
+{% block meta_description %}Frequently asked questions from Stork drivers.{% endblock %}
+
+{% block content %}
+  <!-- Top navigation bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="/driver/">
+        <img class="brand__logo" src="{% static 'stork/img/stork-logo.png' %}" alt="Stork logo">
+        <div class="brand__text">
+          <div class="brand__name">STORK</div>
+          <div class="brand__tag">Driver platform</div>
+        </div>
+      </a>
+
+      <div class="topbar__right">
+        <nav class="nav">
+          <a href="/driver/#benefits">Benefits</a>
+          <a href="/driver/#how">How it works</a>
+          <a href="/driver/#apply">Apply</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <a class="btn btn--ghost" href="#">Log in</a>
+        <a class="btn btn--primary" href="/driver/#apply">Apply</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+
+    <div class="container hero__grid">
+      <div class="hero__left">
+        <div class="badge">
+          <span class="badge__dot"></span>
+          Have questions?
+        </div>
+
+        <h1 class="hero__title">Frequently asked questions</h1>
+
+        <p class="hero__lead">
+          We’ve compiled answers to the most common questions from our drivers.
+          If you can’t find what you’re looking for, feel free to reach out to us.
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary btn--lg" href="#faq">See FAQs</a>
+          <a class="btn btn--ghost btn--lg" href="/driver/#apply">Apply to drive</a>
+        </div>
+
+        <div class="hero__facts">
+          <div class="fact">
+            <div class="fact__num">6</div>
+            <div class="fact__text">topics<br><span>covered</span></div>
+          </div>
+          <div class="fact">
+            <div class="fact__num">1</div>
+            <div class="fact__text">support team<br><span>here for you</span></div>
+          </div>
+          <div class="fact">
+            <div class="fact__num">0</div>
+            <div class="fact__text">monthly fees<br><span>for drivers</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decorative card -->
+      <div class="hero__right">
+        <div class="mock">
+          <div class="mock__top">
+            <div class="mock__pill">
+              <span class="pulse"></span>
+              Support
+            </div>
+            <div class="mock__earn">
+              <div class="mock__earnLabel">FAQs</div>
+              <div class="mock__earnValue">6 topics</div>
+            </div>
+          </div>
+
+          <div class="mock__map" aria-label="FAQ placeholder">
+            <div class="map__grid"></div>
+
+            <div class="ridecard">
+              <div class="ridecard__title">Need more help?</div>
+              <div class="ridecard__row">
+                <span class="chip">Driver support</span>
+                <span class="chip">City offices</span>
+              </div>
+              <div class="ridecard__cta">
+                <span class="btn btn--primary btn--sm">Contact us</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mock__bottom">
+            <div class="mini">
+              <div class="mini__k">Contact</div>
+              <div class="mini__v">support@stork.app</div>
+            </div>
+            <div class="mini">
+              <div class="mini__k">Docs</div>
+              <div class="mini__v">driver guide</div>
+            </div>
+            <div class="mini">
+              <div class="mini__k">Payouts</div>
+              <div class="mini__v">weekly</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sideNote">
+          * UI mockup for demonstration only (no real-time data).
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section__head">
+          <h2>Driver FAQs</h2>
+          <p>Answers to the most common questions from our drivers. Details may vary by city.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Can I drive with Stork in my city?</summary>
+            <p>
+              Stork is expanding, but we’re not available everywhere. Check supported cities
+              or contact our team to see if Stork operates in your area.
+            </p>
+          </details>
+
+          <details>
+            <summary>How do I register to drive with Stork?</summary>
+            <p>
+              Fill in your details, upload required documents and submit your application.
+              After approval and onboarding, you can start driving.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do I need a car to drive with Stork?</summary>
+            <p>
+              Yes. If you don’t have a car, you can join partner fleets or use rental options
+              depending on your city.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do I need a smartphone to drive with Stork?</summary>
+            <p>
+              Yes — ride requests and navigation are handled in the driver app. A modern phone is recommended.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is driving with Stork a good side hustle?</summary>
+            <p>
+              Yes. You choose when to go online. There are no minimum hours — drive evenings, weekends,
+              or whenever you want.
+            </p>
+          </details>
+
+          <details>
+            <summary>How do I get paid for driving with Stork?</summary>
+            <p>
+              Payouts are processed weekly. You can track earnings and payout history in the app (UI placeholder).
+            </p>
+          </details>
+        </div>
+
+        <div class="finalCta">
+          <div>
+            <div class="finalCta__title">Ready to drive with Stork?</div>
+            <div class="finalCta__sub">Fill the application form and get started today.</div>
+          </div>
+          <a class="btn btn--primary btn--lg" href="/driver/#apply">Apply now</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <img class="brand__logo brand__logo--small" src="{% static 'stork/img/stork-logo.png' %}" alt="Stork logo">
+        <div>
+          <div class="footer__brand">STORK</div>
+          <div class="footer__muted">© 2026 • UI-only assignment website</div>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </footer>
+{% endblock %}

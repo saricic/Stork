@@ -21,7 +21,8 @@
           <a href="#benefits">Benefits</a>
           <a href="#how">How it works</a>
           <a href="#apply">Apply</a>
-          <a href="#faq">FAQ</a>
+          <!-- FAQ is a separate page now -->
+          <a href="/faq/">FAQ</a>
         </nav>
 
         <a class="btn btn--ghost" href="#">Log in</a>
@@ -238,7 +239,6 @@
 
         <div class="apply__right">
           <form class="form" action="#" method="post">
-            <!-- not actually posting; for UI only -->
             <div class="form__row">
               <div class="field">
                 <label>Full name</label>
@@ -293,7 +293,7 @@
 
             <div class="form__actions">
               <button class="btn btn--primary btn--lg" type="button">Submit application</button>
-              <a class="btn btn--ghost btn--lg" href="#faq">Read FAQ</a>
+              <a class="btn btn--ghost btn--lg" href="/faq/">Read FAQ</a>
             </div>
 
             <div class="form__hint">
@@ -326,46 +326,6 @@
           <div class="quote__text">“Support and FAQs are easy to find. Everything feels organized.”</div>
           <div class="quote__by">— Tomasz, fleet partner</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section" id="faq">
-    <div class="container">
-      <div class="section__head">
-        <h2>FAQ</h2>
-        <p>Use these as placeholders. Replace them with teacher-required details later.</p>
-      </div>
-
-      <div class="faq">
-        <details>
-          <summary>Can I drive with Stork in my city?</summary>
-          <p>List supported cities here. In a real system this can come from backend settings.</p>
-        </details>
-
-        <details>
-          <summary>Do I need my own car?</summary>
-          <p>Typically yes. If you want, mention rentals or partner fleets (project decision).</p>
-        </details>
-
-        <details>
-          <summary>How do payouts work?</summary>
-          <p>Weekly payouts are common. Later, Django backend can provide payout history endpoints.</p>
-        </details>
-
-        <details>
-          <summary>What documents are required?</summary>
-          <p>License, ID, and vehicle documents. Exact requirements depend on local rules.</p>
-        </details>
-      </div>
-
-      <div class="finalCta">
-        <div>
-          <div class="finalCta__title">Ready to drive with Stork?</div>
-          <div class="finalCta__sub">Fill the application form and get started (UI-only).</div>
-        </div>
-        <a class="btn btn--primary btn--lg" href="#apply">Apply now</a>
       </div>
     </div>
   </section>
