@@ -23,4 +23,5 @@ urlpatterns = [
     path('', index, name='index'),
     path('contact/', contact, name='contact'),
     path('admin/', admin.site.urls),
+    path('driver/',driver, name='driver' ),
 ]
