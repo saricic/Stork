@@ -1,0 +1,8 @@
+<h2>Bu siparişi silmek istediğinizden emin misiniz?</h2>
+<p>{{ order }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sil</button>
+    <a href="{% url 'order_list' %}">İptal</a>
+</form>

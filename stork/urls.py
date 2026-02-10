@@ -27,5 +27,6 @@ urlpatterns = [
     path('register/',register, name='register' ),
     path('reservation/',reservation, name='reservation' ),
     path('orders/',order_list, name='order_list'),
-    path('orders/create',create_order, name='create_order')
+    path('orders/create',create_order, name='create_order'),
+    path('orders/delete/<int:pk>/',order_delete, name='order_delete'),
 ]

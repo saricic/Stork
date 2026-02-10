@@ -1,9 +1,26 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User 
 from django.contrib.auth import authenticate, login, logout 
+from django.shortcuts import get_object_or_404
 from django.contrib import messages 
 from .forms import OrderForm
 from .models import Order
+
+
+def order_delete(request, pk):
+    # Silinecek siparişi bul
+    order = get_object_or_404(Order, pk=pk)
+
+    # Eğer kullanıcı oturum açmış ve sipariş sahibi ise silmeye izin ver
+    if request.user.is_authenticated and order.user == request.user:
+        if request.method == 'POST':  # Güvenlik için POST ile silme
+            order.delete()
+            return redirect('order_list')
+    else:
+        # Eğer yetkisiz kullanıcı ise yönlendir
+        return redirect('order_list')
+
+    return render(request, 'core/order_confirm_delete.html', {'order': order})
 
 def create_order(request):
     if request.method == 'POST':
