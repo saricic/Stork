@@ -2,7 +2,31 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User 
 from django.contrib.auth import authenticate, login, logout 
 from django.contrib import messages 
+from .forms import OrderForm
+from .models import Order
 
+def create_order(request):
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            if request.user.is_authenticated:
+                order.user = request.user
+            order.save()
+            return redirect('order_list')
+    else:
+        form = OrderForm()
+
+    return render(request, 'core/create_order.html', {'form': form})
+
+def order_list(request):
+    if request.user.is_authenticated:
+        orders = Order.objects.filter(user=request.user)
+    else:
+        orders = Order.objects.all()
+
+    return render(request,'core/order_list.html',{'orders': orders}
+)
 
 
 # Create your views here.

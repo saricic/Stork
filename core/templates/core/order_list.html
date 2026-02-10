@@ -1,0 +1,30 @@
+<h2 style="text-align:center; margin-bottom:20px;">Booked Rides</h2>
+
+<ul style="list-style:none; padding:0;">
+{% for order in orders %}
+    <li style="
+        background: #f9f9f9; 
+        margin-bottom: 15px; 
+        padding: 15px 20px; 
+        border-radius: 10px; 
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    ">
+        <div>
+            <p style="margin:0; font-weight:bold; color:#333;">{{ order.pickUpAdress }} → {{ order.dropOffAdress }}</p>
+            <p style="margin:5px 0 0; color:#666;">Seçim: {{ order.choice }} | Oluşturulma: {{ order.created }}</p>
+        </div>
+        <div>
+            <a href="#" 
+               style="text-decoration:none; margin-right:10px; padding:5px 10px; background:#4CAF50; color:white; border-radius:5px;">Update</a>
+            <a href="#" 
+               style="text-decoration:none; padding:5px 10px; background:#f44336; color:white; border-radius:5px;"
+               onclick="return confirm('Bu siparişi silmek istediğinizden emin misiniz?');">Delete</a>
+        </div>
+    </li>
+{% empty %}
+    <li style="text-align:center; color:#888; margin-top:20px;">There is no reservation</li>
+{% endfor %}
+</ul>

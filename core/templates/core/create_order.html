@@ -1,0 +1,45 @@
+<h2 style="text-align:center; margin-bottom:20px;">book a ride</h2>
+
+<form method="POST" style="
+    max-width: 500px; 
+    margin: 0 auto; 
+    background: #f9f9f9; 
+    padding: 25px; 
+    border-radius: 10px; 
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+">
+    {% csrf_token %}
+
+    <!-- Form alanları -->
+    <label style="font-weight:bold;">Pickup Adres</label>
+    {{ form.pickUpAdress }}
+
+    <label style="font-weight:bold;">Dropoff Adres</label>
+    {{ form.dropOffAdress }}
+
+    <label style="font-weight:bold;">Seçim</label>
+    <!-- Choice kısmını hep açık gösteriyoruz -->
+    <select name="choice" size="4" style="
+        padding: 10px; 
+        border-radius: 5px; 
+        border: 1px solid #ccc;
+        width: 100%;
+    ">
+        {% for option in form.choice.field.choices %}
+            <option value="{{ option.0 }}">{{ option.1 }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit" style="
+        padding: 10px 20px; 
+        background: #4CAF50; 
+        color: white; 
+        border: none; 
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    ">Sipariş Oluştur</button>
+</form>
