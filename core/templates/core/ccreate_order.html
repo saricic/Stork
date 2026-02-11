@@ -1,0 +1,121 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Book a ride{% endblock %}
+{% block content %}
+
+<div class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#">
+        <img class="brand__logo" src="{% static 'stork/img/stork-logo.png' %}" alt="Stork logo">
+        <div class="brand__text">
+          <div class="brand__name">STORK</div>
+          <div class="brand__tag">Driver platform</div>
+        </div>
+      </a>
+
+      <div class="topbar__right">
+        <nav class="nav">
+          <a href="#benefits">Benefits</a>
+          <a href="#how">How it works</a>
+          <!-- FAQ is a separate page now -->
+          <a href="/faq/">FAQ</a>
+        </nav>
+
+        <form method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button class="btn btn--primary "type="submit">Log Out</button>
+      </form>
+      </div>
+    </div>
+  </div>
+
+<section class="section">
+  <div class="container">
+
+    <div class="auth">
+      <!-- SOL TARAF (bilgi/hero) -->
+      <div class="auth__left">
+        <div class="pill">
+          <span class="dot"></span>
+          Book a ride • Fast & simple
+        </div>
+
+        <h1 class="hero-title">Book your <span class="accent">Stork</span> ride.</h1>
+        <p class="hero-sub">
+          Enter pickup and dropoff details and choose your ride option.
+        </p>
+
+        <div class="badges">
+          <div class="badge">
+            <div class="badge__num">1</div>
+            <div class="badge__txt">
+              <div class="badge__title">Quick booking</div>
+              <div class="badge__sub">takes less than a minute</div>
+            </div>
+          </div>
+
+          <div class="badge">
+            <div class="badge__num">2</div>
+            <div class="badge__txt">
+              <div class="badge__title">Clear choices</div>
+              <div class="badge__sub">pick what you need</div>
+            </div>
+          </div>
+        </div>
+   
+        
+      </div>
+
+      <!-- SAĞ TARAF (form kartı) -->
+      <div class="auth__right">
+        <div class="card auth__card">
+          <h2 class="card__title">Create ride order</h2>
+          <p class="card__sub">Fill the fields below to book a ride.</p>
+
+          <form method="POST" class="form">
+            {% csrf_token %}
+
+            <div class="form__row">
+              <label class="label">Pickup Address</label>
+              <div class="field">
+                {{ form.pickUpAdress }}
+              </div>
+            </div>
+
+            <div class="form__row">
+              <label class="label">Dropoff Address</label>
+              <div class="field">
+                {{ form.dropOffAdress }}
+              </div>
+            </div>
+
+            <div class="form__row">
+              <label class="label">Choice</label>
+
+             
+              <div class="field">
+                <select name="choice" size="4" class="select select--tall">
+                  {% for option in form.choice.field.choices %}
+                    <option value="{{ option.0 }}">{{ option.1 }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <p class="muted" style="margin: 6px 0 0;">
+                Tip: You can scroll and pick one option.
+              </p>
+            </div>
+
+            <div class="form__actions">
+              <button type="submit" class="btn btn--primary btn--lg">Create order</button>
+              <a class="btn btn--ghost btn--lg" href="/">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib import messages 
 from .forms import OrderForm
 from .models import Order
+from django.contrib.auth.decorators import login_required
 
 
 def order_delete(request, pk):
@@ -19,9 +20,9 @@ def order_delete(request, pk):
     else:
         # Eğer yetkisiz kullanıcı ise yönlendir
         return redirect('order_list')
-
     return render(request, 'core/order_confirm_delete.html', {'order': order})
 
+@login_required
 def create_order(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -36,6 +37,7 @@ def create_order(request):
 
     return render(request, 'core/create_order.html', {'form': form})
 
+@login_required
 def order_list(request):
     if request.user.is_authenticated:
         orders = Order.objects.filter(user=request.user)
@@ -48,7 +50,10 @@ def order_list(request):
 
 # Create your views here.
 def index(request):
-    return render(request,'core/index.html')
+    return render(request,'core/welcome.html')
+
+def faq(request):
+    return render(request,'core/faq.html')
 
 def contact (request):
     return render(request, 'core/contact.html')
@@ -98,4 +103,4 @@ def loginPage(request):
 
 
 def reservation(request):
-    return render(request,'core/reservations.html')
+    return render(request,'core/welcome.html')

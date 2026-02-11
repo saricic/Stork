@@ -1,36 +1,90 @@
-<h2 style="text-align:center; margin-bottom:20px;">Booked Rides</h2>
+{% extends 'core/base.html' %}
+{% block title %}Booked rides{% endblock %}
+{% load static %}
+{% block content %}
 
-<ul style="list-style:none; padding:0;">
-{% for order in orders %}
-    <li style="
-        background: #f9f9f9; 
-        margin-bottom: 15px; 
-        padding: 15px 20px; 
-        border-radius: 10px; 
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    ">
-        <div>
-            <p style="margin:0; font-weight:bold; color:#333;">{{ order.pickUpAdress }} → {{ order.dropOffAdress }}</p>
-            <p style="margin:5px 0 0; color:#666;">Seçim: {{ order.choice }} | Oluşturulma: {{ order.created }}</p>
-        </div>
-        <div>
-            <a href="#" 
-               style="text-decoration:none; margin-right:10px; padding:5px 10px; background:#4CAF50; color:white; border-radius:5px;">Update</a>
+
+<div class="topbar">
+  <div class="container topbar__inner">
+    <a class="brand" href="{% url 'index' %}">
+      <img class="brand__logo" src="{% static 'stork/img/stork-logo.png' %}" alt="Stork logo">
+      <div class="brand__text">
+        <div class="brand__name">STORK</div>
+        <div class="brand__tag">Driver platform</div>
+      </div>
+    </a>
+
+    <div class="topbar__right">
+      <nav class="nav">
+        <a href="#benefits">Benefits</a>
+        <a href="#how">How it works</a>
+        <!-- FAQ is a separate page now -->
+        <a href="/faq/">FAQ</a>
+      </nav>
+      <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button class="btn btn--primary "type="submit">Log Out</button>
+    </form>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <div class="page-head">
+      <div>
+        <h1 class="page-title">Booked rides</h1>
+        <p class="page-sub">Your recent ride orders are listed below.</p>
+      </div>
+
+      <div class="page-actions">
+        <a class="btn btn--primary" href="/orders/create">+ Book a ride</a>
+      </div>
+    </div>
+
+    <div class="list">
+      {% for order in orders %}
+        <div class="card list__item">
+          <div class="list__main">
+            <div class="list__route">
+              <span class="list__from">{{ order.pickUpAdress }}</span>
+              <span class="list__arrow">→</span>
+              <span class="list__to">{{ order.dropOffAdress }}</span>
+            </div>
+
+            <div class="list__meta muted">
+              Choice: {{ order.choice }} • Created: {{ order.created }}
+            </div>
+          </div>
+
+          <div class="list__actions">
+    
+            <a class="btn btn--ghost btn--sm" href="#">
+                Update
+            </a>
         
-            <form action="{% url 'order_delete' order.pk %}" method="post" style="display:inline;">
+            <form action="{% url 'order_delete' order.pk %}"
+                  method="post"
+                  style="display:inline;"
+                  onsubmit="return confirm('Are you sure to delete this order?');">
                 {% csrf_token %}
-                <button type="submit" 
-                        style="padding:5px 10px; background:#f44336; color:white; border:none; border-radius:5px; cursor:pointer;">
+                <button type="submit" class="btn btn--danger btn--sm">
                     Delete
                 </button>
             </form>
+        
         </div>
         
-    </li>
-{% empty %}
-    <li style="text-align:center; color:#888; margin-top:20px;">There is no reservation</li>
-{% endfor %}
-</ul>
+        </div>
+      {% empty %}
+        <div class="card empty">
+          <p class="muted" style="margin:0;">There is no reservation.</p>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

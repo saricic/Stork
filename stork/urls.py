@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from core.views import *
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', index, name='index'),
     path('contact/', contact, name='contact'),
     path('admin/', admin.site.urls),
+    path('faq/', faq,name='faq'),
     path('driver/',driver, name='driver' ),
     path('login/',loginPage, name='login'),
     path('register/',register, name='register' ),
@@ -29,4 +31,5 @@ urlpatterns = [
     path('orders/',order_list, name='order_list'),
     path('orders/create',create_order, name='create_order'),
     path('orders/delete/<int:pk>/',order_delete, name='order_delete'),
+    path("logout/", auth_views.LogoutView.as_view(), name="logout"),
 ]

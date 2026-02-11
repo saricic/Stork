@@ -1,45 +1,144 @@
-<h2 style="text-align:center; margin-bottom:20px;">book a ride</h2>
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Book a ride{% endblock %}
+{% block content %}
 
-<form method="POST" style="
-    max-width: 500px; 
-    margin: 0 auto; 
-    background: #f9f9f9; 
-    padding: 25px; 
-    border-radius: 10px; 
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-">
-    {% csrf_token %}
+<section class="section">
+  <div class="container">
 
-    <!-- Form alanları -->
-    <label style="font-weight:bold;">Pickup Adres</label>
-    {{ form.pickUpAdress }}
+    <div class="auth">
+      <!-- LEFT -->
+      <div class="auth__left">
+        <div class="pill">
+          <span class="dot"></span>
+          Book a ride • Fast & simple
+        </div>
 
-    <label style="font-weight:bold;">Dropoff Adres</label>
-    {{ form.dropOffAdress }}
+        <h1 class="hero-title">Book your <span class="accent">Stork</span> ride.</h1>
+        <p class="hero-sub">
+          Enter pickup and dropoff details and choose your vehicle option.
+        </p>
 
-    <label style="font-weight:bold;">Seçim</label>
-    <!-- Choice kısmını hep açık gösteriyoruz -->
-    <select name="choice" size="4" style="
-        padding: 10px; 
-        border-radius: 5px; 
-        border: 1px solid #ccc;
-        width: 100%;
-    ">
-        {% for option in form.choice.field.choices %}
-            <option value="{{ option.0 }}">{{ option.1 }}</option>
-        {% endfor %}
-    </select>
+        <div class="badges">
+          <div class="badge">
+            <div class="badge__num">1</div>
+            <div class="badge__txt">
+              <div class="badge__title">Quick booking</div>
+              <div class="badge__sub">takes less than a minute</div>
+            </div>
+          </div>
 
-    <button type="submit" style="
-        padding: 10px 20px; 
-        background: #4CAF50; 
-        color: white; 
-        border: none; 
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-    ">Sipariş Oluştur</button>
-</form>
+          <div class="badge">
+            <div class="badge__num">2</div>
+            <div class="badge__txt">
+              <div class="badge__title">Clear choices</div>
+              <div class="badge__sub">pick what you need</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card auth__photo-card" style="margin-top:4px;">
+          <img class="auth__photo-img" src="{% static 'stork/img/auth-taxi.jpg' %}" alt="Stork taxi" />
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="auth__right">
+        <div class="card auth__card">
+          <h2 class="card__title">Create ride order</h2>
+          <p class="card__sub">Fill the fields below to book a ride.</p>
+
+          <form method="POST" class="form">
+            {% csrf_token %}
+
+            <div class="field">
+              <label class="label">Pickup address</label>
+              {{ form.pickUpAdress }}
+            </div>
+
+            <div class="field">
+              <label class="label">Dropoff address</label>
+              {{ form.dropOffAdress }}
+            </div>
+
+            <div class="field">
+              <label class="label">Vehicle</label>
+
+              <div class="vehicleList" role="radiogroup" aria-label="Vehicle choice">
+                {% for option in form.choice.field.choices %}
+                  <label class="vehicleCard" data-value="{{ option.0 }}">
+                    <span class="vehicleLeft">
+                      <span class="vehicleIcon" aria-hidden="true"></span>
+                      <span class="vehicleName">{{ option.1 }}</span>
+                    </span>
+
+                    <span class="vehiclePrice">
+                      {% with label=option.1|lower %}
+                        {% if "basic" in label or "stork" in label %}
+                          &nbsp;
+                        {% elif "comfort" in label %}
+                          +5 zł
+                        {% elif "xl" in label %}
+                          +10 zł
+                        {% elif "premium" in label %}
+                          +12 zł
+                        {% else %}
+                          +5 zł
+                        {% endif %}
+                      {% endwith %}
+                    </span>
+
+                    <input type="radio" name="choice" value="{{ option.0 }}" style="display:none;">
+                  </label>
+                {% endfor %}
+              </div>
+
+              <p class="muted vehicleHint">
+                Choose a vehicle type. The shown price is a simple extra cost.
+              </p>
+            </div>
+
+            <div class="form__actions">
+              <button type="submit" class="btn btn--primary btn--lg">Create order</button>
+              <a class="btn btn--ghost btn--lg" href="/">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const cards = document.querySelectorAll('.vehicleCard');
+    if (!cards.length) return;
+
+    function clearSelected(){
+      cards.forEach(c => c.classList.remove('isSelected'));
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const radio = card.querySelector('input[type="radio"]');
+        if (!radio) return;
+
+        clearSelected();
+        card.classList.add('isSelected');
+        radio.checked = true;
+      });
+    });
+
+    const first = cards[0];
+    if (first) {
+      const r = first.querySelector('input[type="radio"]');
+      if (r && !document.querySelector('.vehicleCard.isSelected')) {
+        first.classList.add('isSelected');
+        r.checked = true;
+      }
+    }
+  })();
+</script>
+
+{% endblock %}

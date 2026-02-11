@@ -1,147 +1,91 @@
-<!DOCTYPE html>
-<!-- Coding by CodingLab | www.codinglabweb.com-->
-<html lang="en" dir="ltr">
-  <head>
-    <link rel="icon" href="data:,">
+{% extends 'core/base.html' %}
+{% load static %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Register{% endblock %}
+{% block meta_description %}Create a Stork account in seconds.{% endblock %}
 
-    
-    <title>Register</title>
-   </head>
-<body>
-  <div class="wrapper">
-    <h2>Register</h2><br>
+{% block content %}
+  <section class="hero">
+    <div class="hero__bg"></div>
 
-    {% if messages %}
-      {% for message in messages %}
-        <h2 style="color: #b22222;">{{message}}</h2>
-      {% endfor %}
-    {% endif %}
-    <form action="#" method="POST">
-      {% csrf_token %}
-      <div class="input-box">
-        <input type="text" placeholder="Create a username" required name="username">
-      </div>
-      <div class="input-box">
-        <input type="email" placeholder="Enter your email" required name="email">
-      </div>
-      <div class="input-box">
-        <input type="password" placeholder="Enter your password" required name="password">
-      </div>
-      <div class="policy">
-      </div>
-      <div class="input-box button">
-        <input type="Submit" value="Register">
-      </div>
-      <div class="text">
-        <h3>Don't have an account? <a href="{% url 'login' %}">Log In</a></h3>
-      </div>
-      <div class="text">
-        <h3>Forgot Password? <a href="#">Reset</a></h3>
-      </div>
-    </form>
-  </div>
-</body>
+    <div class="container hero__grid">
+      <div class="hero__left">
+        <div class="badge">
+          <span class="badge__dot"></span>
+          Create account • Start riding
+        </div>
 
-<style>
-  @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-body{
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f1f3f9;
-}
-.wrapper{
-  position: relative;
-  max-width: 430px;
-  width: 100%;
-  background: #fff;
-  padding: 34px;
-  border-radius: 6px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-  margin: 20px;
-}
-.wrapper h2{
-  position: relative;
-  font-size: 22px;
-  font-weight: 600;
-  color: #333;
-}
-.wrapper h2::before{
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 28px;
-  border-radius: 12px;
-  background: #4070f4;
-}
-.wrapper form{
-  margin-top: 30px;
-}
-.wrapper form .input-box{
-  height: 52px;
-  margin: 18px 0;
-}
-form .input-box input{
-  height: 100%;
-  width: 100%;
-  outline: none;
-  padding: 0 15px;
-  font-size: 17px;
-  font-weight: 400;
-  color: #333;
-  border: 1.5px solid #C7BEBE;
-  border-bottom-width: 2.5px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-.input-box input:focus,
-.input-box input:valid{
-  border-color: #4070f4;
-}
-form .policy{
-  display: flex;
-  align-items: center;
-}
-form h3{
-  color: #707070;
-  font-size: 14px;
-  font-weight: 500;
-  margin-left: 10px;
-}
-.input-box.button input{
-  color: #fff;
-  letter-spacing: 1px;
-  border: none;
-  background: #4070f4;
-  cursor: pointer;
-}
-.input-box.button input:hover{
-  background: #0e4bf1;
-}
-form .text h3{
- color: #333;
- width: 100%;
- text-align: center;
-}
-form .text h3 a{
-  color: #4070f4;
-  text-decoration: none;
-}
-form .text h3 a:hover{
-  text-decoration: underline;
-}
+        <h1 class="hero__title">
+          Join <span class="accent">Stork</span> today.
+        </h1>
 
-</style>
-</html>
+        <p class="hero__lead">
+          Create your account to book rides and manage reservations in one place.
+        </p>
+
+        <div class="hero__facts">
+          <div class="fact">
+            <div class="fact__num">1</div>
+            <div class="fact__text">Fast signup<br><span>less than a minute</span></div>
+          </div>
+          <div class="fact">
+            <div class="fact__num">2</div>
+            <div class="fact__text">Secure profile<br><span>private details</span></div>
+          </div>
+        
+
+        <div class="card auth__photo-card">
+          <img class="auth__photo-img" src="{% static 'stork/img/auth-taxi.jpg' %}" alt="Stork ride">
+        </div>
+
+</div>
+      </div>
+
+      <div class="hero__right">
+        {% if messages %}
+          <div class="auth__messages">
+            {% for message in messages %}
+              <div class="alert alert--{{ message.tags|default:'info' }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="form auth">
+          <div class="auth__head">
+            <h2 class="auth__title">Create account</h2>
+            <p class="auth__sub muted">Use a unique username and a strong password.</p>
+          </div>
+
+          <form method="POST" novalidate>
+            {% csrf_token %}
+
+            <div class="field">
+              <label for="id_username">Username</label>
+              <input id="id_username" type="text" name="username" placeholder="Create a username" required autocomplete="username">
+            </div>
+
+            <div class="field">
+              <label for="id_email">Email</label>
+              <input id="id_email" type="email" name="email" placeholder="Enter your email" required autocomplete="email">
+            </div>
+
+            <div class="field">
+              <label for="id_password">Password</label>
+              <input id="id_password" type="password" name="password" placeholder="Create a password" required autocomplete="new-password">
+            </div>
+
+            <div class="form__actions">
+              <button class="btn btn--primary" type="submit">Sign up</button>
+              <a class="btn btn--ghost" href="{% url 'login' %}">I already have an account</a>
+            </div>
+
+            <div class="form__hint">
+              By creating an account, you agree to our
+              <a class="link" href="#">Terms</a> and <a class="link" href="#">Privacy policy</a>.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

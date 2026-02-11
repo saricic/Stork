@@ -1,7 +1,107 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
-{% block title %} Contact {% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block content %}
-    <h1>Contact</h1>
+<section class="section">
+  <div class="container">
+
+    <div class="auth">
+      <!-- LEFT -->
+      <div class="auth__left">
+        <div class="pill">
+          <span class="dot"></span>
+          Contact • We reply by email
+        </div>
+
+        <h1 class="hero-title">Contact <span class="accent">Stork</span>.</h1>
+        <p class="hero-sub">
+          Send us a message and we’ll get back to you. Please include a real email so we can reply.
+        </p>
+
+        <div class="badges">
+          <div class="badge">
+            <div class="badge__num">1</div>
+            <div class="badge__txt">
+              <div class="badge__title">Fast response</div>
+              <div class="badge__sub">usually within 24h</div>
+            </div>
+          </div>
+
+          <div class="badge">
+            <div class="badge__num">2</div>
+            <div class="badge__txt">
+              <div class="badge__title">Clear form</div>
+              <div class="badge__sub">name • email • message</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card auth__photo-card" style="margin-top:12px;">
+          <img class="auth__photo-img" src="{% static 'stork/img/auth-taxi.jpg' %}" alt="Stork taxi">
+        </div>
+
+        <div class="sideNote" style="margin-top:10px;">
+          Prefer a direct email? You can also reach us at <b>support@stork.example</b>.
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="auth__right">
+        {% if messages %}
+          <div class="card" style="margin-bottom:12px;">
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              {% for message in messages %}
+                <div class="pill" style="width:100%; justify-content:flex-start;">
+                  <span class="dot"></span>
+                  {{ message }}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="card auth__card">
+          <h2 class="card__title">Send a message</h2>
+          <p class="card__sub">We’ll reply to your email.</p>
+
+          <form method="POST" class="form">
+            {% csrf_token %}
+
+            <div class="field">
+              <label class="label" for="id_name">Your name</label>
+              <input id="id_name" name="name" type="text" placeholder="John Doe" required>
+            </div>
+
+            <div class="field">
+              <label class="label" for="id_email">Your email</label>
+              <input id="id_email" name="email" type="email" placeholder="john@email.com" required>
+            </div>
+
+            <div class="field">
+              <label class="label" for="id_subject">Subject</label>
+              <input id="id_subject" name="subject" type="text" placeholder="Booking / Account / Other" required>
+            </div>
+
+            <div class="field">
+              <label class="label" for="id_message">Message</label>
+              <textarea id="id_message" name="message" rows="6" placeholder="Write your message..." required></textarea>
+            </div>
+
+            <div class="form__actions">
+              <button type="submit" class="btn btn--primary btn--lg">Send</button>
+              <a class="btn btn--ghost btn--lg" href="/">Back</a>
+            </div>
+
+            <p class="muted" style="margin-top:10px; font-size:12px;">
+              By sending a message, you agree that we may use your email only to reply to your request.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 {% endblock %}
